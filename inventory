@@ -1,4 +1,6 @@
-master01
-infra01
-node01
-node02
+[ocp]
+master01.curlee.local
+infra01.curlee.local
+node01.curlee.local
+node02.curlee.local
+
