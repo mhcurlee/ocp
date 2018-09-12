@@ -1,0 +1,48 @@
+---
+
+- name: Prep for OpenShift install 
+  hosts: ose 
+  tasks: 
+
+
+    - name: add motd
+      copy:
+        dest: /etc/motd
+        src: ./motd
+
+    - name: update system
+      yum:
+        name: "*"
+        state: latest
+
+
+    - name: install needed packges 
+      yum:
+        name:
+          - wget
+          - git
+          - net-tools
+          - bind-utils
+          - iptables-services
+          - bridge-utils
+          - bash-completion
+          - kexec-tools
+          - sos
+          - psacct 
+          - docker
+          - PyYAML
+        state: latest
+        
+
+    - name: update docker config
+      copy:
+        src: sysconfig_docker
+        dest: /etc/sysconfig/docker
+        backup: yes
+
+
+    - name: start and enable docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
