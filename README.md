@@ -8,4 +8,9 @@ openshift_disable_check=docker_image_availability,memory_availability,package_av
 ```
 
 
+master and infra need at least 4GB of RAM to have success.
+
+
+
+
 
