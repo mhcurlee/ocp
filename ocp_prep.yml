@@ -6,12 +6,12 @@
 
 
 
-    - name: deploy authorized_key
-      authorized_key:
-        user: root 
-        state: present
-        key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKR8cYLVjcMggV/a0g4GTBgCUbcNihlytm80nLMO7fGzMIpgezs6wJJZmWOuIW4doh+ciBZEIaDDMkaGWHZC8uAyl2aOpjQrwvYnKF6FqeIG51qfvDK61S7Mex8yHHQyfSpzQafT7JKq6t+kNuTq5J+oiSVd4xBgbtTfF0TTiilIlxqWQYdGOanLLpfWdEucMmKzEoAzJ3WigHyyYVyWCxkou1i+tTJXE/yH4Leh0rjDCF66huQrK8jcKBUxXBI6DoP1zZCp2rzqXyAFtX1svaHz/FloPp5va8R+pPpqXoQSr3qfZ5c/wvWo1ve/JHU4+LQkuGLhF1EAROeCJ64VkZ root_public_key'
-
+#    - name: deploy authorized_key
+#      authorized_key:
+#        user: root 
+#        state: present
+#        key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKR8cYLVjcMggV/a0g4GTBgCUbcNihlytm80nLMO7fGzMIpgezs6wJJZmWOuIW4doh+ciBZEIaDDMkaGWHZC8uAyl2aOpjQrwvYnKF6FqeIG51qfvDK61S7Mex8yHHQyfSpzQafT7JKq6t+kNuTq5J+oiSVd4xBgbtTfF0TTiilIlxqWQYdGOanLLpfWdEucMmKzEoAzJ3WigHyyYVyWCxkou1i+tTJXE/yH4Leh0rjDCF66huQrK8jcKBUxXBI6DoP1zZCp2rzqXyAFtX1svaHz/FloPp5va8R+pPpqXoQSr3qfZ5c/wvWo1ve/JHU4+LQkuGLhF1EAROeCJ64VkZ root_public_key'
+#
 
     - name: add motd
       copy:
@@ -35,10 +35,11 @@
           - bridge-utils
           - bash-completion
           - kexec-tools
-          - sos
+#          - sos
           - psacct 
           - docker
           - PyYAML
+          - NetworkManager
         state: latest
         
 
@@ -54,3 +55,13 @@
         name: docker
         state: started
         enabled: yes
+
+
+    - name: start and enable NetworkManager
+      service:
+        name: NetworkManager 
+        state: started
+        enabled: yes
+
+
+

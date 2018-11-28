@@ -1,6 +1,2 @@
 [ocp]
-master01.curlee.local
-infra01.curlee.local
-node01.curlee.local
-node02.curlee.local
-
+ec2-54-210-179-219.compute-1.amazonaws.com
